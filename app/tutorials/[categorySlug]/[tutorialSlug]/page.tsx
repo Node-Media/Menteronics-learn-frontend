@@ -91,7 +91,7 @@ export default async function TutorialPage({ params }: PageProps) {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Side Navigation - Hidden on mobile, shown on large screens */}
           {allTutorials.length > 0 && (
-            <aside className="hidden lg:block w-80 flex-shrink-0 relative min-h-screen">
+            <aside className="hidden lg:block w-80 shrink-0 relative min-h-screen">
               <TutorialSideNav 
                 tutorials={allTutorials}
                 currentTutorialSlug={tutorialSlug}
@@ -158,7 +158,7 @@ export default async function TutorialPage({ params }: PageProps) {
                     className="flex-1 group"
                   >
                     <div className="flex items-start gap-3 p-4 rounded-lg border-2 border-gray-200 hover:border-accent transition-colors">
-                      <ChevronLeft className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
+                      <ChevronLeft className="w-5 h-5 text-accent mt-1 shrink-0" />
                       <div className="flex-1 min-w-0">
                         <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
                           Previous Chapter
@@ -188,7 +188,7 @@ export default async function TutorialPage({ params }: PageProps) {
                           {nextTutorial.title}
                         </div>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
+                      <ChevronRight className="w-5 h-5 text-accent mt-1 shrink-0" />
                     </div>
                   </Link>
                 ) : (

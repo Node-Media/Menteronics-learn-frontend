@@ -51,7 +51,7 @@ export function TutorialSideNav({ tutorials, currentTutorialSlug, categorySlug, 
       `}
     >
       {/* Fixed Breadcrumb - Always visible at top */}
-      <div className="p-6 pb-4 border-b-2 border-accent/20 flex-shrink-0">
+      <div className="p-6 pb-4 border-b-2 border-accent/20 shrink-0">
         <nav className="flex items-center gap-2 text-sm">
           <Link 
             href="/tutorials"
@@ -101,7 +101,7 @@ export function TutorialSideNav({ tutorials, currentTutorialSlug, categorySlug, 
                 <div className="flex items-start gap-3">
                   <span 
                     className={`
-                      flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold
+                      shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold
                       ${isActive 
                         ? 'bg-white text-accent' 
                         : 'bg-gray-200 text-gray-600 group-hover:bg-accent group-hover:text-white'
