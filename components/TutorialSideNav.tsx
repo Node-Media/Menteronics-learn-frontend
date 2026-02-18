@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import { Check } from 'lucide-react'
 import type { Tutorial, Category } from '@/lib/content-types'
@@ -13,8 +14,42 @@ interface TutorialSideNavProps {
 }
 
 export function TutorialSideNav({ tutorials, currentTutorialSlug, categorySlug, category, currentTitle }: TutorialSideNavProps) {
+  const [isFooterVisible, setIsFooterVisible] = useState(false)
+  const observerRef = useRef<IntersectionObserver | null>(null)
+
+  useEffect(() => {
+    // Find the footer element
+    const footer = document.querySelector('footer')
+    if (!footer) return
+
+    // Create intersection observer to watch footer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const footerEntry = entries[0]
+        setIsFooterVisible(footerEntry.isIntersecting)
+      },
+      {
+        threshold: 0,
+        rootMargin: '0px',
+      }
+    )
+
+    observerRef.current = observer
+    observer.observe(footer)
+
+    // Cleanup on unmount
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
   return (
-    <nav className="fixed top-20 w-80 h-[calc(100vh-5rem)] bg-white rounded-lg border-2 border-accent/20 shadow-lg overflow-hidden flex flex-col">
+    <nav 
+      className={`
+        w-80 h-[calc(100vh-5rem)] bg-white rounded-lg border-2 border-accent/20 shadow-lg overflow-hidden flex flex-col transition-all duration-300
+        ${isFooterVisible ? 'absolute bottom-0' : 'fixed top-20'}
+      `}
+    >
       {/* Fixed Breadcrumb - Always visible at top */}
       <div className="p-6 pb-4 border-b-2 border-accent/20 flex-shrink-0">
         <nav className="flex items-center gap-2 text-sm">

@@ -91,7 +91,7 @@ export default async function TutorialPage({ params }: PageProps) {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Side Navigation - Hidden on mobile, shown on large screens */}
           {allTutorials.length > 0 && (
-            <aside className="hidden lg:block w-80 flex-shrink-0">
+            <aside className="hidden lg:block w-80 flex-shrink-0 relative min-h-screen">
               <TutorialSideNav 
                 tutorials={allTutorials}
                 currentTutorialSlug={tutorialSlug}
