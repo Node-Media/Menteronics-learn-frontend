@@ -3,6 +3,7 @@ import { Quicksand } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const quicksand = Quicksand({
   variable: "--font-quicksand",
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body
         className={`${quicksand.variable} antialiased flex flex-col min-h-screen`}
       >
+        <SmoothScroll />
         <Header />
         <main className="flex-1">
           {children}

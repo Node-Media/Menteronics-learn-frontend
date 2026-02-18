@@ -45,11 +45,6 @@ body {
   color: white;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
 /* Custom Scrollbar - Global */
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,

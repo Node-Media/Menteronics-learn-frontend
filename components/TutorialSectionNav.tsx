@@ -103,7 +103,7 @@ export function TutorialSectionNav({ content }: TutorialSectionNavProps) {
           <button
             key={section.id}
             onClick={() => handleClick(section.id)}
-            className="group relative flex items-center justify-end"
+            className="group relative flex items-center justify-end cursor-pointer py-2"
             aria-label={`Navigate to ${section.title}`}
           >
             {/* Indicator */}
@@ -117,13 +117,11 @@ export function TutorialSectionNav({ content }: TutorialSectionNavProps) {
             
             {/* Tooltip */}
             <span
-              className={`absolute right-10 whitespace-nowrap px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200 pointer-events-none ${
-                section.level === 3 ? 'text-sm' : 'text-base'
-              } ${
-                activeSection === section.id
-                  ? 'bg-accent text-white opacity-100 translate-x-0'
-                  : 'bg-gray-800 text-white opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'
-              }`}
+              className={`absolute right-10 whitespace-nowrap px-3 py-1.5 rounded-md font-medium transition-all duration-200 pointer-events-none
+                ${section.level === 3 ? 'text-sm' : 'text-base'}
+                ${activeSection === section.id ? 'bg-accent text-white' : 'bg-gray-800 text-white'}
+                opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0
+              `}
             >
               {section.title}
             </span>
