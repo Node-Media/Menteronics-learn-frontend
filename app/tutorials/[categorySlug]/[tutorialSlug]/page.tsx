@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Clock, ChevronLeft, Calendar, ChevronRight } from 'lucide-react'
 import { ContentRenderer } from '@/components/ContentRenderer'
 import { TutorialSideNav } from '@/components/TutorialSideNav'
+import { TutorialSectionNav } from '@/components/TutorialSectionNav'
 import type { Tutorial } from '@/lib/content-types'
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3000'
@@ -81,6 +82,9 @@ export default async function TutorialPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-white">
+      {/* Section Navigator */}
+      <TutorialSectionNav content={tutorial.content} />
+
       <article className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
         {/* Two-column layout: Side Nav + Content */}

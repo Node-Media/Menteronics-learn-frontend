@@ -65,7 +65,7 @@ export function ContentRenderer({ content }: ContentRendererProps) {
   }
 
   const getHeadingClassName = (level: number): string => {
-    const baseClasses = 'font-bold'
+    const baseClasses = 'font-bold scroll-mt-24'
     switch (level) {
       case 1:
         return `${baseClasses} text-4xl mb-6 mt-8`
