@@ -16,6 +16,21 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Reduce console verbosity in development
+  devIndicators: {
+    buildActivity: false,
+    buildActivityPosition: 'bottom-right',
+  },
+  // Suppress Fast Refresh logs
+  onDemandEntries: {
+    maxInactiveAge: 60 * 1000,
+    pagesBufferLength: 5,
+  },
+  logging: {
+    fetches: {
+      fullUrl: false,
+    },
+  },
 };
 
 export default nextConfig;

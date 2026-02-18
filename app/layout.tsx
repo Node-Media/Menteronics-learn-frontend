@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { ConsoleFilter } from "@/components/ConsoleFilter";
 
 const quicksand = Quicksand({
   variable: "--font-quicksand",
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body
         className={`${quicksand.variable} antialiased flex flex-col min-h-screen`}
       >
+        <ConsoleFilter />
         <SmoothScroll />
         <Header />
         <main className="flex-1">
