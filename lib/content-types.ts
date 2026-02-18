@@ -76,6 +76,7 @@ export interface Tutorial {
   slug: string
   summary: string
   content: StructuredContent
+  order: number
   readingTime?: number
   isPublished: boolean
   category: Category

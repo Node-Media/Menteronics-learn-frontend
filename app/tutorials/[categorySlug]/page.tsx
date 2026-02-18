@@ -24,7 +24,7 @@ async function getCategory(slug: string): Promise<Category | null> {
 async function getTutorialsByCategory(categoryId: string): Promise<Tutorial[]> {
   try {
     const res = await fetch(
-      `${BACKEND_URL}/api/tutorials?where[category][equals]=${categoryId}&where[isPublished][equals]=true`,
+      `${BACKEND_URL}/api/tutorials?where[category][equals]=${categoryId}&where[isPublished][equals]=true&sort=order`,
       { next: { revalidate: 0 } } // 0 = no cache during development
     )
     
@@ -95,7 +95,7 @@ export default async function CategoryPage({ params }: PageProps) {
             </div>
           ) : (
             <div className="space-y-6">
-              {tutorials.map((tutorial, index) => (
+              {tutorials.map((tutorial) => (
                 <Link
                   key={tutorial.id}
                   href={`/tutorials/${categorySlug}/${tutorial.slug}`}
@@ -105,7 +105,7 @@ export default async function CategoryPage({ params }: PageProps) {
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <span className="text-sm font-semibold text-accent">
-                          #{index + 1}
+                          #{tutorial.order}
                         </span>
                         <h2 className="text-2xl font-bold group-hover:text-accent transition-colors">
                           {tutorial.title}
