@@ -24,10 +24,10 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+            {/* <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">M</span>
-            </div>
-            <span className="font-bold text-xl">Menteronics</span>
+            </div> */}
+            <span className="font-bold text-xl text-accent">Menteronics</span>
           </Link>
 
           {/* Navigation */}
@@ -60,9 +60,20 @@ export function Header() {
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    handleSearch(e)
+                  }
+                }}
                 className="w-48 sm:w-64 pl-10 pr-4 py-2 text-sm border border-gray-300 rounded-lg outline-none transition-all focus:border-accent focus:ring-2 focus:ring-accent/20"
               />
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+              <button
+                type="submit"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-accent transition-colors"
+                aria-label="Search"
+              >
+                <Search className="w-4 h-4" />
+              </button>
             </div>
           </form>
         </div>

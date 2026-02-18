@@ -26,17 +26,23 @@ export default function SearchPage() {
       setError(null)
 
       try {
-        const res = await fetch(`${BACKEND_URL}/api/search?q=${encodeURIComponent(query)}`)
+        const res = await fetch(`${BACKEND_URL}/api/search?q=${encodeURIComponent(query)}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          mode: 'cors',
+        })
         
         if (!res.ok) {
-          throw new Error('Search failed')
+          throw new Error(`Search failed with status: ${res.status}`)
         }
 
         const data = await res.json()
         setResults(data.results || [])
       } catch (err) {
         console.error('Search error:', err)
-        setError('Failed to perform search. Please try again.')
+        setError(`Failed to perform search. Make sure the backend server is running on ${BACKEND_URL}`)
         setResults([])
       } finally {
         setLoading(false)
