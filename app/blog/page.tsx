@@ -8,7 +8,7 @@ async function getBlogs(): Promise<Blog[]> {
   try {
     const res = await fetch(
       `${BACKEND_URL}/api/blogs?where[isPublished][equals]=true&sort=-updatedAt`,
-      { next: { revalidate: 0 } } // No cache during development
+      { next: { revalidate: 60 } } // Revalidate every 60 seconds
     )
     
     if (!res.ok) return []

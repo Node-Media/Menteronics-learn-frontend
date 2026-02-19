@@ -95,8 +95,11 @@ export function ContentRenderer({ content }: ContentRendererProps) {
     text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     // Italic
     text = text.replace(/\*(.+?)\*/g, '<em>$1</em>')
-    // Inline code
-    text = text.replace(/`(.+?)`/g, '<code class="inline-code">$1</code>')
+    // Inline code (escape HTML entities inside code)
+    text = text.replace(/`(.+?)`/g, (match, code) => {
+      const escaped = code.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      return `<code class="inline-code">${escaped}</code>`
+    })
     // Links
     text = text.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-accent hover:text-accent-dark underline">$1</a>')
     return text

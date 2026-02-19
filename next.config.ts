@@ -18,8 +18,7 @@ const nextConfig: NextConfig = {
   },
   // Reduce console verbosity in development
   devIndicators: {
-    buildActivity: false,
-    buildActivityPosition: 'bottom-right',
+    position: 'bottom-right',
   },
   // Suppress Fast Refresh logs
   onDemandEntries: {

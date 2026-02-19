@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Search, Clock, ChevronRight, Loader2 } from 'lucide-react'
@@ -8,7 +8,7 @@ import type { SearchResult } from '@/lib/content-types'
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3000'
 
-export default function SearchPage() {
+function SearchContent() {
   const searchParams = useSearchParams()
   const query = searchParams.get('q') || ''
   const [results, setResults] = useState<SearchResult[]>([])
@@ -170,5 +170,32 @@ export default function SearchPage() {
         </div>
       </section>
     </main>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen bg-white">
+        <section className="bg-gray-50 py-12 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-center gap-3 mb-6">
+                <Search className="w-8 h-8 text-accent" />
+                <h1 className="text-3xl sm:text-4xl font-bold">Search</h1>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="max-w-4xl mx-auto flex items-center justify-center py-12">
+            <Loader2 className="w-8 h-8 text-accent animate-spin" />
+            <span className="ml-3 text-gray-600">Loading...</span>
+          </div>
+        </section>
+      </main>
+    }>
+      <SearchContent />
+    </Suspense>
   )
 }
