@@ -107,20 +107,20 @@ export function ContentRenderer({ content }: ContentRendererProps) {
 
   const renderImage = (block: Extract<ContentBlock, { type: 'image' }>, index: number) => {
     return (
-      <figure key={index} className="my-8" suppressHydrationWarning>
-        <div className="relative w-full h-auto rounded-lg overflow-hidden border border-gray-200">
+      <figure key={index} className="my-8 flex flex-col items-center" suppressHydrationWarning>
+        <div className="relative max-w-3xl w-full rounded-lg overflow-hidden border border-gray-200 shadow-sm">
           <Image
             src={block.url}
             alt={block.alt}
-            width={800}
-            height={600}
-            className="w-full h-auto"
+            width={1024}
+            height={768}
+            className="w-full h-auto object-contain"
             priority={index === 0}
-            unoptimized={process.env.NODE_ENV === 'development'}
+            quality={85}
           />
         </div>
         {block.caption && (
-          <figcaption className="text-sm text-gray-600 text-center mt-2 italic">
+          <figcaption className="text-sm text-gray-600 text-center mt-3 italic max-w-3xl">
             {block.caption}
           </figcaption>
         )}
