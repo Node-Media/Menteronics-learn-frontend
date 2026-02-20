@@ -116,7 +116,7 @@ export function ContentRenderer({ content }: ContentRendererProps) {
             height={128}
             className="w-full h-auto object-contain"
             priority={index === 0}
-            quality={75}
+            quality={100}
           />
         </div>
         {block.caption && (
